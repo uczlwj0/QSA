@@ -1,0 +1,103 @@
+<!doctype html>
+
+<!-- uczlwj0 - Code Source: the code is adapted from a index.html downloaded from a website: https://getmdl.io/templates/index.html and Claire's Web GIS practical week - 2,6,and 7-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<!--uczlwj0 - change the title of the webpage-->
+    <title>Question Setting App</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+	<!--uczlwj0 - load the map -->
+	<!--uczlwj0 - this part of the coed is adapted from Claire's practical week - 2 -->
+	<!-- the following links add the CSS and Javascript required for the Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="crossorigin=""></script>
+    <!-- the following CSS is used to set the size of the Map -->
+    <style type="text/css">
+    #mapid { height: 180px; }
+    </style>
+	
+  </head>
+  <body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--black mdl-color-text--white">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">London</span>
+          <div class="mdl-layout-spacer"></div>
+        </div>
+      </header>
+      <div class="demo-drawer mdl-layout__drawer mdl-color--black mdl-color-text--white">
+        <header class="demo-drawer-header">
+		<!-- uczlwj0 - change the left-top picture-->
+          <img src="images/ucl.png" class="demo-drawer">
+          <div class="demo-avatar-dropdown">
+            <span>Question Setting App</span>
+            <div class="mdl-layout-spacer"></div>
+          </div>
+        </header>
+		<!-- uczlwj0 - change the left side content-->
+        <nav class="demo-navigation mdl-navigation mdl-color--black">
+		<!-- uczlwj0 - this part of the code is adapted from Claire's practical week 6 and 7-->
+		  <label for="question_id">Question ID (Unique)</label>  <p> <input type="text" size="30" id="question_id"/>    <br /> </p>
+		  <label for="question">Question</label>                 <p> <input type="text" size="30" id="question"/>       <br /> </p>
+          <label for="answer_1">Answer 1</label>                 <p> <input type="text" size="30" id="answer_1"/>       <br /> </p>
+          <label for="answer_2">Answer 2</label>                 <p> <input type="text" size="30" id="answer_2"/>       <br /> </p>
+		  <label for="answer_3">Answer 3</label>                 <p> <input type="text" size="30" id="answer_3"/>       <br /> </p>
+          <label for="answer_4">Answer 4</label>                 <p> <input type="text" size="30" id="answer_4"/>       <br /> </p>
+		  <label for="correct_answer">Correct Answer</label>     <p> <input type="text" size="30" id="correct_answer"/> <br /> </p>
+		  <label for="location_name">Location Name</label>       <p> <input type="text" size="30" id="location_name"/>  <br /> </p>
+		  <label for="latitude">Latitude</label>                 <p> <input type="text" size="30" id="latitude"/>       <br /> </p>
+          <label for="longitude">Longitude</label>               <p> <input type="text" size="30" id="longitude"/>      <br /> </p>
+		  <!-- uczlwj0 - upload data button-->
+		  <br />
+          <p> <button id="UploadData" onclick="uploadData()">UploadData</button> </p>
+          <!-- uczlwj0 - show the result of upload data-->
+		  <br />
+          <p> <div id="dataUploadResult">...</div> </p>
+        </nav>
+      </div>
+      <main class="mdl-layout__content mdl-color--white">
+        <div class="mdl-grid demo-content">
+          <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+		  <!-- change the main content of the web-->
+		  <div id="mapid" style="width: 2500px; height: 800px;"></div>	
+          </div>
+        </div>
+      </main>
+    </div>
+      
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<script src="./js/appActivity.js"></script>
+	<script src="./js/uploadData.js"> </script>
+  </body>
+</html>

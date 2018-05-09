@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>The User Guide for Question Setting App</title>
+</head>
+<body>
+<p>1. Start the Question Setting App</p>
+<p>Open the software Bitvise SSH Client 6.31 and type the following code in the terminal to connect to the right folder:</p>
+<p>cd /home/studentuser/code/server/uczlwj0</p>
+<p>Then type the following code to start the httpServer:</p>
+<p>node httpServer.js &    </p>
+<p>Next, you should connect to another folder by typing: </p>
+<p>cd /home/studentuser/code/questions/uczlwj0</p>
+<p>And type the following code to start the PhoneGap:</p>
+<p>phonegap serve</p>
+<p>Finally,  type the following website in the browser explorer, you can see the interface of the Question Setting App and start to use it.</p>
+<p>http://developer.cege.ucl.ac.uk:31275/</p>
+<p>2.	Find a location and design a quiz</p>
+<p>Firstly, you need to go here: https://itouchmap.com/latlong.html  to pick a location. This location is picked as an example. The name of this location is: Anatomy Building.</p>
+<p>Once you have selected a location, click it on the map and you can see the coordinates of the location shown below the map. </p>
+<p>Then, what you need to do is to design a quiz.</p>
+<p>Here is an example:</p>
+<p>Question: What university owns the Anatomy Building?</p>
+<p>Answer 1: Kings College London</p>
+<p>Answer 2: Imperial College London</p>
+<p>Answer 3: University College London</p>
+<p>Answer 4: the London School of Economics and Political Sciences</p>
+<p>Correct Answer: c</p>
+<p>Once you finish, all the information for creating a quiz has been prepared.</p>
+<p>3.	Creating a quiz in App</p>
+<p>If you want to create a new quiz in this App, all the things you need to do is to fill the form in the sidebar with your designed quiz and click the “UploadData” button.</p>
+<p>Once you click the button, you will see the prompt message. The following message means your quiz starts to be uploaded.</p>
+<p>Next, you will see another prompt message which is used to check the data that you input.</p>
+<p>If you see that the “…” below the button is changed to “Row Inserted”, that means you create the quiz successfully. If you do see any other information instead of “Row Inserted”, that means your operation is fail. Therefore, you need to check what might be wrong with your input and do the same job again.</p>
+<p>4.	Log out the App</p>
+<p>If you have achieved all the operation for creating your quiz, you can close the window to close the App.</p>
+<p>It would be better if you can close the PhoneGap by typing the following code in the terminal of Bitvise SSH Client 6.31:</p>
+<p>“Ctrl” + C</p>
+<p>Do not forget to close httpServer either:</p>
+<p>fg 1</p>
+<p>“Ctrl” + C</p>
+</body>
+</html>
